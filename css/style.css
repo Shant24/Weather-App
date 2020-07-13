@@ -1,0 +1,94 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  background-color: #5fc5fc;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  color: white;
+}
+
+@media (min-width: 481px) {
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+main {
+  width: 700px;
+  height: 500px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+@media (max-width: 480px) {
+  main {
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+  }
+}
+
+.topPart {
+  width: 100%;
+  height: 120px;
+  padding: 10px;
+  /* border-bottom: 2px solid black; */
+  /* background-color: yellow; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.city {
+  font-size: 30px;
+  font-weight: 400;
+  margin-bottom: 10px;
+  /* text-align: center; */
+}
+
+.date {
+  text-align: center;
+  font-size: 18px;
+}
+
+.weekContainer {
+  width: 100%;
+  height: 60px;
+  /* background-color: white; */
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  user-select: none;
+}
+
+.weekContainer .weeksDay {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  padding-bottom: 5px;
+  /* background-color: rgba(255, 255, 255, 0.6); */
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.weekContainer .weeksDay:hover {
+  color: black;
+  background-color: rgba(255, 255, 255, 0.6);
+}
+
+.weekContainer .weeksDay.active {
+  color: black;
+  background-color: rgba(255, 255, 255, 0.6);
+}
