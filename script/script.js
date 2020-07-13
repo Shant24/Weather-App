@@ -32,7 +32,6 @@ const api = {
 
 const dataOfResponse = (r, weekDay) => {
   let vDate = new Date(r.current.dt * 1000);
-  debugger;
   weekDay && (vDate = new Date(r.daily[weekDay - 1].dt * 1000));
 
   const vMonth = vDate.getMonth();
@@ -76,7 +75,6 @@ const dataOfResponse = (r, weekDay) => {
   for (let i = 0; i < weeksDayAll.length; i++) {
     weeksDayAll[i].addEventListener("click", (i) => {
       getDay(i);
-      // weeksDayAll[i].removeEventListener(getDay(i));
     });
   }
 };
