@@ -11,6 +11,10 @@ body {
   color: white;
 }
 
+body img {
+  user-select: none;
+}
+
 @media (min-width: 481px) {
   body {
     display: flex;
