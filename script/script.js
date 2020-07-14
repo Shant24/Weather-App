@@ -1,14 +1,12 @@
 "use strict";
 
 import getLocation from "./modules/getLocation.js";
-import getWeather, { data } from "./modules/api.js";
-import pageLoad from "./modules/pageLoad.js";
+import getWeather from "./modules/api.js";
 
 const findCity = document.querySelector(".findCity"),
   searchArea = document.querySelector(".searchArea");
 
 getLocation();
-pageLoad(data);
 
 const find = (e) => {
   e.preventDefault();
