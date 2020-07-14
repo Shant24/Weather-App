@@ -47,14 +47,14 @@ main {
   align-items: center;
 }
 
-.city {
+.currentCity {
   font-size: 30px;
   font-weight: 400;
   margin-bottom: 10px;
   /* text-align: center; */
 }
 
-.date {
+.dateOfCity {
   text-align: center;
   font-size: 18px;
 }
