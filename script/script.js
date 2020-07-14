@@ -32,15 +32,3 @@ searchArea.addEventListener("keydown", (elem) => {
     find(elem);
   }
 });
-
-// getDate;
-debugger;
-getDate(1595149200 * 1000);
-console.log(year);
-console.log(week);
-console.log(month);
-console.log(day);
-console.log(hour);
-console.log(minute);
-
-window.data = data;
