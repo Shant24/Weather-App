@@ -11,11 +11,10 @@ export const data = {};
 
 const getWeatherSevenDays = async (lat, lon) => {
   try {
-    const weather = await fetch(
-      `${api.base}onecall?lat=${lat}&lon=${lon}&exclude=current,hourly,minutely&appid=${api.key}`
+    const response = await fetch(
+      `${api.base}onecall?lat=${lat}&lon=${lon}&units=metric&exclude=current,hourly,minutely&appid=${api.key}`
     );
-    const response = await weather.json();
-    data.location = await response;
+    data.location = await response.json();
   } catch (error) {
     console.error(error);
   }

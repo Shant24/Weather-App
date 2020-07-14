@@ -15,16 +15,78 @@
           <div class="dateOfCity"></div>
         </div>
         <form class="searchContainer" action="">
-          <input class="searchArea" type="text" name="" id="search" />
-          <button class="findCity" type="submit">Find</button>
+          <input class="searchArea" type="text" placeholder="Enter your City" />
+          <button class="findBtn" type="submit">
+            <img src="images/icon/find-icon.png" alt="" />
+          </button>
         </form>
+        <div class="sunriseSunsetContainer">
+          <div class="sunBox">
+            <img
+              class="sunrise"
+              src="images/icon/sunrise-top-icon.png"
+              alt="Sunrise"
+            />
+            <div class="sunTime">10:20</div>
+          </div>
+          <div class="sunBox">
+            <img
+              class="sunset"
+              src="images/icon/sunset-top-icon.png"
+              alt="Sunset"
+            />
+            <div class="sunTime">20:10</div>
+          </div>
+        </div>
       </div>
       <div class="bottomPart">
-        <div class="weekContainer">
-          <!-- <div class="weekDay">
-            <div></div>
-            <div></div>
-          </div> -->
+        <div class="weekContainer"></div>
+        <div class="detailedWeatherContainer">
+          <div class="leftPart">
+            <img src="images/icon/sunrise-top-icon.png" alt="Sunrise" />
+            <div class="curTemperature"></div>
+            <div class="curTime"></div>
+          </div>
+          <div class="wthTotalInfContainer">
+            <div class="logoContainer"></div>
+            <div class="informationContainer">
+              <div class="information">
+                <div class="typeOfWeather"></div>
+                <div class="weatherBox">
+                  <div class="weatherBoxIcon">
+                    <img
+                      src="images/icon/week-icons/wind-speed.png"
+                      alt="wind speed"
+                    />
+                  </div>
+                  <div class="windSpeed"></div>
+                </div>
+                <div class="weatherBox">
+                  <div class="weatherBoxIcon">
+                    <img
+                      src="images/icon/week-icons/clouds.png"
+                      alt="Cloudiness"
+                    />
+                  </div>
+                  <div class="cloudiness"></div>
+                </div>
+                <div class="weatherBox">
+                  <div class="weatherBoxIcon">
+                    <img
+                      src="images/icon/week-icons/humidity.png"
+                      alt="Humidity"
+                    />
+                  </div>
+                  <div class="humidity"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="rightPart">
+            <img src="images/icon/sunset-top-icon.png" alt="Sunset" />
+            <div class="curTemperature"></div>
+            <div class="curTime"></div>
+          </div>
         </div>
       </div>
     </main>

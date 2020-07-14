@@ -8,9 +8,6 @@ const getLocation = () => {
   const success = (position) => {
     latitude = position.coords.latitude;
     longitude = position.coords.longitude;
-
-    console.log(`${latitude} ${longitude}`);
-
     getWeather(null, latitude, longitude);
   };
 

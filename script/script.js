@@ -3,21 +3,21 @@
 import getLocation from "./modules/getLocation.js";
 import getWeather from "./modules/api.js";
 
-const findCity = document.querySelector(".findCity"),
+const findBtn = document.querySelector(".findBtn"),
   searchArea = document.querySelector(".searchArea");
 
 getLocation();
 
 const find = (e) => {
   e.preventDefault();
-  getWeather(searchArea.value);
+  searchArea.value.length > 0 && getWeather(searchArea.value);
   searchArea.value = "";
 };
 
-findCity.addEventListener("click", (e) => find(e));
+findBtn.addEventListener("click", (e) => find(e));
 
-searchArea.addEventListener("keydown", (elem) => {
-  if (elem.code === "Enter" && searchArea.value > 0) {
-    find(elem);
+searchArea.addEventListener("keydown", (e) => {
+  if (e.code === "Enter" && searchArea.value.length > 0) {
+    find(e);
   }
 });
