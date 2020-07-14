@@ -3,14 +3,6 @@
 import getLocation from "./modules/getLocation.js";
 import getWeather, { data } from "./modules/api.js";
 import pageLoad from "./modules/pageLoad.js";
-import getDate, {
-  year,
-  week,
-  month,
-  day,
-  hour,
-  minute,
-} from "./modules/getDate.js";
 
 const findCity = document.querySelector(".findCity"),
   searchArea = document.querySelector(".searchArea");
@@ -20,7 +12,6 @@ pageLoad(data);
 
 const find = (e) => {
   e.preventDefault();
-  console.log(searchArea.value);
   getWeather(searchArea.value);
   searchArea.value = "";
 };
