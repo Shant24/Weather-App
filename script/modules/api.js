@@ -22,11 +22,10 @@ const getWeatherSevenDays = async (lat, lon) => {
 
 const getCurrentWeatherByCity = async (city) => {
   try {
-    const weather = await fetch(
+    const response = await fetch(
       `${api.base}weather?q=${city}&APPID=${api.key}`
     );
-    const response = await weather.json();
-    data.city = await response;
+    data.city = await response.json();
   } catch (error) {
     console.error(error);
   }
@@ -34,11 +33,10 @@ const getCurrentWeatherByCity = async (city) => {
 
 const getCurrentWeatherByLocation = async (latitude, longitude) => {
   try {
-    const weather = await fetch(
+    const response = await fetch(
       `${api.base}weather?lat=${latitude}&lon=${longitude}&APPID=${api.key}`
     );
-    const response = await weather.json();
-    data.city = await response;
+    data.city = await response.json();
   } catch (error) {
     console.error(error);
   }
