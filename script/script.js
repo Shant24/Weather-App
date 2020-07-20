@@ -1,10 +1,11 @@
 "use strict";
 
 import getLocation from "./modules/getLocation.js";
-import getWeather from "./modules/api.js";
+import getWeather, { data } from "./modules/api.js";
 
 const findBtn = document.querySelector(".findBtn"),
-  searchArea = document.querySelector(".searchArea");
+  searchArea = document.querySelector(".searchArea"),
+  unit = document.querySelectorAll(".unit");
 
 getLocation();
 
@@ -20,4 +21,19 @@ searchArea.addEventListener("keydown", (e) => {
   if (e.code === "Enter" && searchArea.value.length > 0) {
     find(e);
   }
+});
+
+const activateUnit = () => {
+  for (let i = 0; i < unit.length; i++) {
+    unit[i].classList.toggle("active");
+  }
+  getWeather(data.city.name);
+};
+
+unit[0].addEventListener("click", () => {
+  data.unit === "imperial" && (data.unit = "metric") & activateUnit();
+});
+
+unit[1].addEventListener("click", () => {
+  data.unit === "metric" && (data.unit = "imperial") & activateUnit();
 });

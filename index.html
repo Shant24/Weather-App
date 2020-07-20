@@ -4,20 +4,24 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weather Application</title>
-    <link
-      rel="shortcut icon"
-      href="/images/icon/favicon.ico"
-      type="image/x-icon"
-    />
+    <link rel="shortcut icon" href="/images/icon/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="css/reset.css" />
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
     <main class="main">
       <div class="topPart">
-        <div class="dateContainer">
+        <div class="cityDateContainer">
           <div class="currentCity"></div>
           <div class="dateOfCity"></div>
+        </div>
+        <div class="currentTempContainer">
+          <img
+            class="currentWeatherLogo"
+            src="images/icon/week-icons/shining-sun.png"
+            alt="Type of Weather"
+          />
+          <div class="currentTemp"></div>
         </div>
         <form class="searchContainer" action="">
           <input class="searchArea" type="text" placeholder="Enter your City" />
@@ -25,23 +29,9 @@
             <img src="images/icon/find-icon.png" alt="" />
           </button>
         </form>
-        <div class="sunriseSunsetContainer">
-          <div class="sunBox">
-            <img
-              class="sunrise"
-              src="images/icon/sunrise-top-icon.png"
-              alt="Sunrise"
-            />
-            <div class="sunTime">10:20</div>
-          </div>
-          <div class="sunBox">
-            <img
-              class="sunset"
-              src="images/icon/sunset-top-icon.png"
-              alt="Sunset"
-            />
-            <div class="sunTime">20:10</div>
-          </div>
+        <div class="weatherUnits">
+          <div class="unit active">C</div>
+          <div class="unit">F</div>
         </div>
       </div>
       <div class="bottomPart">
@@ -53,34 +43,31 @@
             <div class="curTime"></div>
           </div>
           <div class="wthTotalInfContainer">
-            <div class="logoContainer"></div>
+            <div class="logoContainer">
+              <img
+                class="weatherLogo"
+                src="images/icon/week-icons/shining-sun.png"
+                alt="Type of Weather"
+              />
+            </div>
             <div class="informationContainer">
               <div class="information">
                 <div class="typeOfWeather"></div>
                 <div class="weatherBox">
                   <div class="weatherBoxIcon">
-                    <img
-                      src="images/icon/week-icons/wind-speed.png"
-                      alt="wind speed"
-                    />
+                    <img src="images/icon/week-icons/wind-speed.png" alt="wind speed" />
                   </div>
                   <div class="windSpeed"></div>
                 </div>
                 <div class="weatherBox">
                   <div class="weatherBoxIcon">
-                    <img
-                      src="images/icon/week-icons/clouds.png"
-                      alt="Cloudiness"
-                    />
+                    <img src="images/icon/week-icons/clouds.png" alt="Cloudiness" />
                   </div>
                   <div class="cloudiness"></div>
                 </div>
                 <div class="weatherBox">
                   <div class="weatherBoxIcon">
-                    <img
-                      src="images/icon/week-icons/humidity.png"
-                      alt="Humidity"
-                    />
+                    <img src="images/icon/week-icons/humidity.png" alt="Humidity" />
                   </div>
                   <div class="humidity"></div>
                 </div>

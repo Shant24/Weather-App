@@ -7,12 +7,14 @@ const api = {
   base: "https://api.openweathermap.org/data/2.5/",
 };
 
-export const data = {};
+export const data = {
+  unit: "metric",
+};
 
-const getWeatherSevenDays = async (lat, lon) => {
+const getWeatherSevenDays = async (latitude, longitude, units) => {
   try {
     const response = await fetch(
-      `${api.base}onecall?lat=${lat}&lon=${lon}&units=metric&exclude=current,hourly,minutely&appid=${api.key}`
+      `${api.base}onecall?lat=${latitude}&lon=${longitude}&units=${units}&exclude=current,hourly,minutely&APPID=${api.key}`
     );
     data.location = await response.json();
   } catch (error) {
@@ -20,21 +22,19 @@ const getWeatherSevenDays = async (lat, lon) => {
   }
 };
 
-const getCurrentWeatherByCity = async (city) => {
+const getCurrentWeatherByCity = async (city, units) => {
   try {
-    const response = await fetch(
-      `${api.base}weather?q=${city}&APPID=${api.key}`
-    );
+    const response = await fetch(`${api.base}weather?q=${city}&units=${units}&APPID=${api.key}`);
     data.city = await response.json();
   } catch (error) {
     console.error(error);
   }
 };
 
-const getCurrentWeatherByLocation = async (latitude, longitude) => {
+const getCurrentWeatherByLocation = async (latitude, longitude, units) => {
   try {
     const response = await fetch(
-      `${api.base}weather?lat=${latitude}&lon=${longitude}&APPID=${api.key}`
+      `${api.base}weather?lat=${latitude}&lon=${longitude}&units=${units}&APPID=${api.key}`
     );
     data.city = await response.json();
   } catch (error) {
@@ -47,14 +47,13 @@ const getWeather = async (city, latitude, longitude) => {
   data.city = null;
 
   try {
-    city && (await getCurrentWeatherByCity(city));
+    city && (await getCurrentWeatherByCity(city, data.unit));
 
     latitude
-      ? await getWeatherSevenDays(latitude, longitude)
-      : await getWeatherSevenDays(data.city.coord?.lat, data.city.coord.lon);
+      ? await getWeatherSevenDays(latitude, longitude, data.unit)
+      : await getWeatherSevenDays(data.city.coord?.lat, data.city.coord.lon, data.unit);
 
-    !city &&
-      (await getCurrentWeatherByLocation(data.location.lat, data.location.lon));
+    !city && (await getCurrentWeatherByLocation(data.location.lat, data.location.lon, data.unit));
   } catch (error) {
     console.error(error);
   }

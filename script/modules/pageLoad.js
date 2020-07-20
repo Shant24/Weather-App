@@ -6,14 +6,15 @@ import { data } from "./api.js";
 const weekContainer = document.querySelector(".weekContainer"),
   currentCity = document.querySelector(".currentCity"),
   dateOfCity = document.querySelector(".dateOfCity"),
-  sunDayTime = document.querySelectorAll(".sunTime"),
   curTemperature = document.querySelectorAll(".curTemperature"),
   curTime = document.querySelectorAll(".curTime"),
   typeOfWeather = document.querySelector(".typeOfWeather"),
   windSpeed = document.querySelector(".windSpeed"),
   cloudiness = document.querySelector(".cloudiness"),
   humidity = document.querySelector(".humidity"),
-  logoContainer = document.querySelector(".logoContainer");
+  weatherLogo = document.querySelector(".weatherLogo"),
+  currentWeatherLogo = document.querySelector(".currentWeatherLogo"),
+  currentTemp = document.querySelector(".currentTemp");
 
 const weatherIcons = {
   Clear: "images/icon/week-icons/shining-sun.png",
@@ -31,11 +32,10 @@ const pageLoad = () => {
     currentCity.innerHTML = `${data.city.name}, ${data.city.sys.country}`;
     dateOfCity.innerHTML = `${week}, ${day} ${month} ${year}, ${hour}:${minute}`;
 
-    getDate(data.city.sys.sunrise * 1000);
-    sunDayTime[0].innerHTML = `${hour}:${minute}`;
+    const unitType = data.unit === "metric" ? "C" : "F";
 
-    getDate(data.city.sys.sunset * 1000);
-    sunDayTime[1].innerHTML = `${hour}:${minute}`;
+    currentWeatherLogo.src = `${weatherIcons[data.city.weather[0].main]}`;
+    currentTemp.innerHTML = `${Math.round(data.city.main.temp)}&deg${unitType}`;
 
     weekContainer.innerHTML = [...data.location.daily]
       .splice(0, 7)
@@ -54,12 +54,8 @@ const pageLoad = () => {
     weeksDayAll[0].classList.add("active");
 
     const dayInformation = (i) => {
-      curTemperature[0].innerHTML = `${Math.round(
-        detailedData[i].temp.min
-      )}\u00B0C`;
-      curTemperature[1].innerHTML = `${Math.round(
-        detailedData[i].temp.max
-      )}\u00B0C`;
+      curTemperature[0].innerHTML = `${Math.round(detailedData[i].temp.min)}&deg${unitType}`;
+      curTemperature[1].innerHTML = `${Math.round(detailedData[i].temp.max)}&deg${unitType}`;
 
       getDate(detailedData[i].sunrise * 1000);
       curTime[0].innerHTML = `${hour}:${minute}`;
@@ -71,8 +67,7 @@ const pageLoad = () => {
       cloudiness.innerHTML = `${detailedData[i].clouds}%`;
       humidity.innerHTML = `${detailedData[i].humidity}%`;
 
-      const weatherIcon = weatherIcons[detailedData[i].weather[0].main];
-      logoContainer.innerHTML = `<img class="weatherLogo" src=${weatherIcon} alt="Type of Weather" />`;
+      weatherLogo.src = `${weatherIcons[detailedData[i].weather[0].main]}`;
     };
 
     dayInformation(0);
@@ -80,8 +75,7 @@ const pageLoad = () => {
     for (let i = 0; i < weeksDayAll.length; i++) {
       const select = () => {
         for (let j = 0; j < weeksDayAll.length; j++) {
-          weeksDayAll[j].classList.contains("active") &&
-            weeksDayAll[j].classList.remove("active");
+          weeksDayAll[j].classList.contains("active") && weeksDayAll[j].classList.remove("active");
         }
 
         weeksDayAll[i].classList.add("active");
