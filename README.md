@@ -1,1 +1,1 @@
-Link for see: https://shant24.github.io/Weather-App
+Link for see: https://shant24.github.io/weather-app
