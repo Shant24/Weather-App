@@ -1,29 +1,29 @@
-"use strict";
+'use strict';
 
-import getDate, { year, week, month, day, hour, minute } from "./getDate.js";
-import { data } from "./api.js";
+import getDate, { year, week, month, day, hour, minute } from './getDate.js';
+import { data } from './api.js';
 
-const weekContainer = document.querySelector(".weekContainer"),
-  currentCity = document.querySelector(".currentCity"),
-  dateOfCity = document.querySelector(".dateOfCity"),
-  curTemperature = document.querySelectorAll(".curTemperature"),
-  curTime = document.querySelectorAll(".curTime"),
-  typeOfWeather = document.querySelector(".typeOfWeather"),
-  windSpeed = document.querySelector(".windSpeed"),
-  cloudiness = document.querySelector(".cloudiness"),
-  humidity = document.querySelector(".humidity"),
-  weatherLogo = document.querySelector(".weatherLogo"),
-  currentWeatherLogo = document.querySelector(".currentWeatherLogo"),
-  currentTemp = document.querySelector(".currentTemp");
+const weekContainer = document.querySelector('.weekContainer'),
+  currentCity = document.querySelector('.currentCity'),
+  dateOfCity = document.querySelector('.dateOfCity'),
+  curTemperature = document.querySelectorAll('.curTemperature'),
+  curTime = document.querySelectorAll('.curTime'),
+  typeOfWeather = document.querySelector('.typeOfWeather'),
+  windSpeed = document.querySelector('.windSpeed'),
+  cloudiness = document.querySelector('.cloudiness'),
+  humidity = document.querySelector('.humidity'),
+  weatherLogo = document.querySelector('.weatherLogo'),
+  currentWeatherLogo = document.querySelector('.currentWeatherLogo'),
+  currentTemp = document.querySelector('.currentTemp');
 
 const weatherIcons = {
-  Clear: "images/icon/week-icons/shining-sun.png",
-  Clouds: "images/icon/week-icons/cloud.png",
-  Drizzle: "images/icon/week-icons/cloudy-rain.png",
-  Rain: "images/icon/week-icons/light-rain.png",
-  Thunderstorm: "images/icon/week-icons/cloud-thunder.png",
-  Snow: "images/icon/week-icons/snow.png",
-  Mist: "images/icon/week-icons/strong-wind.png",
+  Clear: 'images/icon/week-icons/shining-sun.png',
+  Clouds: 'images/icon/week-icons/cloud.png',
+  Drizzle: 'images/icon/week-icons/cloudy-rain.png',
+  Rain: 'images/icon/week-icons/light-rain.png',
+  Thunderstorm: 'images/icon/week-icons/cloud-thunder.png',
+  Snow: 'images/icon/week-icons/snow.png',
+  Mist: 'images/icon/week-icons/strong-wind.png',
 };
 
 const pageLoad = () => {
@@ -32,7 +32,7 @@ const pageLoad = () => {
     currentCity.innerHTML = `${data.city.name}, ${data.city.sys.country}`;
     dateOfCity.innerHTML = `${week}, ${day} ${month} ${year}, ${hour}:${minute}`;
 
-    const unitType = data.unit === "metric" ? "C" : "F";
+    const unitType = data.unit === 'metric' ? 'C' : 'F';
 
     currentWeatherLogo.src = `${weatherIcons[data.city.weather[0].main]}`;
     currentTemp.innerHTML = `${Math.round(data.city.main.temp)}&deg${unitType}`;
@@ -46,16 +46,20 @@ const pageLoad = () => {
                   <div>${week}</div>
                 </div>`;
       })
-      .join("");
+      .join('');
 
     // == Which week day is selected && Detailed Weather
-    const weeksDayAll = document.querySelectorAll(".weeksDay");
+    const weeksDayAll = document.querySelectorAll('.weeksDay');
     const detailedData = data.location.daily;
-    weeksDayAll[0].classList.add("active");
+    weeksDayAll[0].classList.add('active');
 
     const dayInformation = (i) => {
-      curTemperature[0].innerHTML = `${Math.round(detailedData[i].temp.min)}&deg${unitType}`;
-      curTemperature[1].innerHTML = `${Math.round(detailedData[i].temp.max)}&deg${unitType}`;
+      curTemperature[0].innerHTML = `${Math.round(
+        detailedData[i].temp.min
+      )}&deg${unitType}`;
+      curTemperature[1].innerHTML = `${Math.round(
+        detailedData[i].temp.max
+      )}&deg${unitType}`;
 
       getDate(detailedData[i].sunrise * 1000);
       curTime[0].innerHTML = `${hour}:${minute}`;
@@ -75,14 +79,15 @@ const pageLoad = () => {
     for (let i = 0; i < weeksDayAll.length; i++) {
       const select = () => {
         for (let j = 0; j < weeksDayAll.length; j++) {
-          weeksDayAll[j].classList.contains("active") && weeksDayAll[j].classList.remove("active");
+          weeksDayAll[j].classList.contains('active') &&
+            weeksDayAll[j].classList.remove('active');
         }
 
-        weeksDayAll[i].classList.add("active");
+        weeksDayAll[i].classList.add('active');
         dayInformation(i);
       };
 
-      weeksDayAll[i].addEventListener("click", select);
+      weeksDayAll[i].addEventListener('click', select);
     }
   };
 
